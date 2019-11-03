@@ -5,6 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import export_graphviz
 
 # Load data file
@@ -142,8 +143,19 @@ def cal_accuracy(y_test, y_pred):
 y_pred_gini = prediction(data_test, gini)
 cal_accuracy(label_test, y_pred_gini)
 
-
 y_pred_entropy = prediction(data_test, Info_gain)
 cal_accuracy(label_test, y_pred_entropy)
 
-export_graphviz(gini, out_file='tree.dot')
+export_graphviz(gini, out_file='gini.dot')
+export_graphviz(Info_gain, out_file='Info_gain.dot')
+
+# KNN Algorithm
+knn = KNeighborsClassifier(n_neighbors=49)
+knn.fit(data_train, label_train)
+
+# Predict on dataset which model has not seen before
+predict_knn = knn.predict(data_test)
+print(predict_knn)
+
+# Calculate Precision, Recall, F-measure and Accuracy of the model
+cal_accuracy(label_test, predict_knn)
