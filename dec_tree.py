@@ -95,33 +95,9 @@ data_train, data_test, label_train, label_test = train_test_split(data_drop_depo
 # print(label_test)
 
 
-def train_using_gini(x_train, y_train):
-    # Creating the classifier object
-    clf_gini = DecisionTreeClassifier(criterion="gini", random_state=1, max_depth=2)
-    # Performing training
-    clf_gini.fit(x_train, y_train)
-    return clf_gini
-
-
-gini = train_using_gini(data_train, label_train)
-# print(gini)
-
-
-def train_using_entropy(x_train, y_train):
-    # Decision tree with entropy
-    clf_entropy = DecisionTreeClassifier(criterion="entropy", random_state=1, max_depth=2)
-    # Performing training
-    clf_entropy.fit(x_train, y_train)
-    return clf_entropy
-
-
-Info_gain = train_using_entropy(data_train, label_train)
-# print(Info_gain)
-
-
 # Function to make predictions
 def prediction(x_test, clf_object):
-    # Predicton
+    # Prediction
     y_pred = clf_object.predict(x_test)
     print("Predicted values:")
     print(y_pred)
@@ -130,32 +106,72 @@ def prediction(x_test, clf_object):
 
 # Function to calculate accuracy
 def cal_accuracy(y_test, y_pred):
-    print("Confusion Matrix: ",
-          confusion_matrix(y_test, y_pred))
+    print("Confusion Matrix: ", confusion_matrix(y_test, y_pred))
 
-    print("Accuracy : ",
-          accuracy_score(y_test, y_pred) * 100)
+    print("Accuracy : ", accuracy_score(y_test, y_pred) * 100)
 
-    print("Report : ",
-          classification_report(y_test, y_pred))
+    print(classification_report(y_test, y_pred))
 
 
+# Cart Algorithm
+def train_using_gini(x_train, y_train):
+    # Creating the classifier object
+    clf_gini = DecisionTreeClassifier(criterion="gini", random_state=1, max_depth=2)
+    # Performing training
+    clf_gini.fit(x_train, y_train)
+    return clf_gini
+
+
+# Training Using Cart Algorithm
+gini = train_using_gini(data_train, label_train)
+# print(gini)
+
+
+# ID3 Algorithm
+def train_using_entropy(x_train, y_train):
+    # Decision tree with entropy
+    clf_entropy = DecisionTreeClassifier(criterion="entropy", random_state=1, max_depth=2)
+    # Performing training
+    clf_entropy.fit(x_train, y_train)
+    return clf_entropy
+
+
+# Training Using ID3 Algorithm
+Info_gain = train_using_entropy(data_train, label_train)
+# print(Info_gain)
+
+
+# Predict on data set which model has not seen before
 y_pred_gini = prediction(data_test, gini)
+
+# Calculate Precision, Recall, F-measure and Accuracy of the model
 cal_accuracy(label_test, y_pred_gini)
 
+# Predict on data set which model has not seen before
 y_pred_entropy = prediction(data_test, Info_gain)
+
+# Calculate Precision, Recall, F-measure and Accuracy of the model
 cal_accuracy(label_test, y_pred_entropy)
 
+# Drawing Graphs
 export_graphviz(gini, out_file='gini.dot')
 export_graphviz(Info_gain, out_file='Info_gain.dot')
 
-# KNN Algorithm
-knn = KNeighborsClassifier(n_neighbors=49)
-knn.fit(data_train, label_train)
 
-# Predict on dataset which model has not seen before
-predict_knn = knn.predict(data_test)
-print(predict_knn)
+# KNN Algorithm
+def train_using_knn(x_train, y_train):
+    knn1 = KNeighborsClassifier(n_neighbors=49)
+    # Performing training
+    knn1.fit(x_train, y_train)
+    return knn1
+
+
+# Training Using KNN Algorithm
+knn = train_using_knn(data_train, label_train)
+
+# Predict on data set which model has not seen before
+predict_knn = prediction(data_test, knn)
 
 # Calculate Precision, Recall, F-measure and Accuracy of the model
 cal_accuracy(label_test, predict_knn)
+
