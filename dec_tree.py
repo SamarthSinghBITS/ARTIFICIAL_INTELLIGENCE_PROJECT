@@ -7,6 +7,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import export_graphviz
+from sklearn.neural_network import MLPClassifier
+from sklearn import svm
 
 # Load data file
 data = pd.read_csv('bank.csv')
@@ -140,7 +142,6 @@ def train_using_entropy(x_train, y_train):
 Info_gain = train_using_entropy(data_train, label_train)
 # print(Info_gain)
 
-
 # Predict on data set which model has not seen before
 y_pred_gini = prediction(data_test, gini)
 
@@ -165,7 +166,6 @@ def train_using_knn(x_train, y_train):
     knn1.fit(x_train, y_train)
     return knn1
 
-
 # Training Using KNN Algorithm
 knn = train_using_knn(data_train, label_train)
 
@@ -175,3 +175,27 @@ predict_knn = prediction(data_test, knn)
 # Calculate Precision, Recall, F-measure and Accuracy of the model
 cal_accuracy(label_test, predict_knn)
 
+
+# MLP Algorithm
+mlp = MLPClassifier(solver='adam', activation='logistic', alpha=1e-5, hidden_layer_sizes=(7), random_state=1, epsilon=1e-9)
+
+# Training Using MLP Algorithm
+mlp.fit(data_train, label_train)
+
+# Predict on data set which model has not seen before
+predict_mlp = mlp.predict(data_test)
+
+# Calculate Precision, Recall, F-measure and Accuracy of the model
+cal_accuracy(label_test, predict_mlp)
+
+# SVM Algorithm
+svclf = svm.LinearSVC(penalty='l2', dual=False, C=2.5, random_state=1)
+
+# Training Using Linear SVC Algorithm
+svclf.fit(data_train, label_train)
+
+# Predict on data set which model has not seen before
+predict_svm = svclf.predict(data_test)
+
+# Calculate Precision, Recall, F-measure and Accuracy of the model
+cal_accuracy(label_test, predict_svm)
