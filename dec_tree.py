@@ -177,10 +177,14 @@ cal_accuracy(label_test, predict_knn)
 
 
 # MLP Algorithm
-mlp = MLPClassifier(solver='adam', activation='logistic', alpha=1e-5, hidden_layer_sizes=(7), random_state=1, epsilon=1e-9)
+def train_using_mlp(x_train, y_train):
+    mlp1 = MLPClassifier(solver='adam', activation='logistic', alpha=1e-5, hidden_layer_sizes=(7), random_state=1, epsilon=1e-9)
+    # Performing training
+    mlp1.fit(x_train, y_train)
+    return mlp1
 
 # Training Using MLP Algorithm
-mlp.fit(data_train, label_train)
+mlp = train_using_mlp(data_train, label_train)
 
 # Predict on data set which model has not seen before
 predict_mlp = mlp.predict(data_test)
@@ -188,11 +192,16 @@ predict_mlp = mlp.predict(data_test)
 # Calculate Precision, Recall, F-measure and Accuracy of the model
 cal_accuracy(label_test, predict_mlp)
 
+
 # SVM Algorithm
-svclf = svm.LinearSVC(penalty='l2', dual=False, C=2.5, random_state=1)
+def train_using_svm(x_train, y_train):
+    svclf1 = svm.LinearSVC(penalty='l2', dual=False, C=2.5, random_state=1)
+    # Performing training
+    svclf1.fit(x_train, y_train)
+    return svclf1
 
 # Training Using Linear SVC Algorithm
-svclf.fit(data_train, label_train)
+svclf = train_using_svm(data_train, label_train)
 
 # Predict on data set which model has not seen before
 predict_svm = svclf.predict(data_test)
