@@ -1,1 +1,1 @@
-# ARTIFICIAL_INTELLIGENCE_PROJECT
+# CS F407 Artificial Intelligence Project
