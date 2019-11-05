@@ -253,8 +253,15 @@ def decision():
         print(main_input[0], main_input[1])
         bank = pd.DataFrame([main_input])
         bank.columns = ['age', 'job', 'marital', 'education', 'balance', 'duration', 'campaign', 'default_cat',
-                        'housing_cat', 'loan_cat', 'recent_pdays']
-        print(bank)
+                        'housing_cat', 'loan_cat', 'pdays']
+        # Create a new column: recent_pdays
+        bank['recent_pdays'] = np.where(bank['pdays'], 1 / bank.pdays, 1 / bank.pdays)
+
+        # Drop 'pdays'
+        bank.drop('pdays', axis=1, inplace=True)
+        # print(bank)
+
+        # converting job to dummy variable
         bank["job_blue-collar"] = bank['job'].map({'Blue Collar': 1, 'Entrepreneur': 0, 'Self Employed': 0,
                                                    'Pink Collar': 0, 'Technician': 0, 'White Collar': 0, 'Others': 0})
         bank["job_entrepreneur"] = bank['job'].map({'Blue Collar': 0, 'Entrepreneur': 1, 'Self Employed': 0,
@@ -269,19 +276,29 @@ def decision():
                                                   'Pink Collar': 0, 'Technician': 1, 'White Collar': 0, 'Others': 0})
         bank["job_white-collar"] = bank['job'].map({'Blue Collar': 0, 'Entrepreneur': 0, 'Self Employed': 0,
                                                     'Pink Collar': 0, 'Technician': 0, 'White Collar': 1, 'Others': 0})
+
+        # Drop 'job'
         bank.drop('job', axis=1, inplace=True)
+
+        # converting marital to dummy variable
         bank["marital_divorced"] = bank['marital'].map({'Divorced': 1, 'Married': 0, 'Single': 0})
         bank["marital_married"] = bank['marital'].map({'Divorced': 0, 'Married': 1, 'Single': 0})
         bank["marital_single"] = bank['marital'].map({'Divorced': 0, 'Married': 0, 'Single': 1})
+
+        # Drop 'marital'
         bank.drop('marital', axis=1, inplace=True)
+
+        # converting education to dummy variable
         bank["education_primary"] = bank['education'].map({'Primary': 1, 'Secondary': 0, 'Tertiary': 0, 'Unknown': 0})
         bank["education_secondary"] = bank['education'].map({'Primary': 0, 'Secondary': 1, 'Tertiary': 0, 'Unknown': 0})
         bank["education_tertiary"] = bank['education'].map({'Primary': 0, 'Secondary': 0, 'Tertiary': 1, 'Unknown': 0})
         bank["education_unknown"] = bank['education'].map({'Primary': 0, 'Secondary': 0, 'Tertiary': 0, 'Unknown': 1})
+
+        # Drop 'education'
         bank.drop('education', axis=1, inplace=True)
         print(bank)
-        for col in bank.columns:
-            print(col)
+
+        # prediction functions
         predict_knn_f = prediction(bank, knn)
         predict_cart_f = prediction(bank, gini)
         predict_id_f = prediction(bank, Info_gain)
@@ -379,3 +396,4 @@ submit = tk.Button(master, text='Submit', width=25, command=decision)
 submit.grid(row=11, column=1)
 
 tk.mainloop()
+
