@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module prediction</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>prediction</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Csamarth%5Canaconda3%5Cenvs%5Ccode%5Clib%5Cprediction.py">c:\users\samarth\anaconda3\envs\code\lib\prediction.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="pandas.html">pandas</a><br>
+</td><td width="25%" valign=top><a href="sklearn.svm.html">sklearn.svm</a><br>
+</td><td width="25%" valign=top><a href="tkinter.html">tkinter</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-cal_accuracy"><strong>cal_accuracy</strong></a>(y_test, y_pred)</dt><dd><tt>#&nbsp;Function&nbsp;to&nbsp;calculate&nbsp;accuracy</tt></dd></dl>
+ <dl><dt><a name="-decision"><strong>decision</strong></a>()</dt></dl>
+ <dl><dt><a name="-prediction"><strong>prediction</strong></a>(x_test, clf_object)</dt><dd><tt>#&nbsp;Function&nbsp;to&nbsp;make&nbsp;predictions</tt></dd></dl>
+ <dl><dt><a name="-train_using_entropy"><strong>train_using_entropy</strong></a>(x_train, y_train)</dt><dd><tt>#&nbsp;ID3&nbsp;Algorithm</tt></dd></dl>
+ <dl><dt><a name="-train_using_gini"><strong>train_using_gini</strong></a>(x_train, y_train)</dt><dd><tt>#&nbsp;Cart&nbsp;Algorithm</tt></dd></dl>
+ <dl><dt><a name="-train_using_knn"><strong>train_using_knn</strong></a>(x_train, y_train)</dt><dd><tt>#&nbsp;KNN&nbsp;Algorithm</tt></dd></dl>
+ <dl><dt><a name="-train_using_mlp"><strong>train_using_mlp</strong></a>(x_train, y_train)</dt><dd><tt>#&nbsp;MLP&nbsp;Algorithm</tt></dd></dl>
+ <dl><dt><a name="-train_using_svm"><strong>train_using_svm</strong></a>(x_train, y_train)</dt><dd><tt>#&nbsp;SVM&nbsp;Algorithm</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>Education</strong> = ['Primary', 'Secondary', 'Tertiary', 'Unknown']<br>
+<strong>Info_gain</strong> = DecisionTreeClassifier(class_weight=None, criter...                 random_state=1, splitter='best')<br>
+<strong>Jobs</strong> = ['Blue Collar', 'Entrepreneur', 'Pink Collar', 'Self Employed', 'Technician', 'White Collar', 'Others']<br>
+<strong>Marital</strong> = ['Divorced', 'Married', 'Single']<br>
+<strong>Yes_No_default</strong> = ['Yes', 'No']<br>
+<strong>Yes_No_housing</strong> = ['Yes', 'No']<br>
+<strong>Yes_No_loan</strong> = ['Yes', 'No']<br>
+<strong>age</strong> = &lt;tkinter.Text object .!text&gt;<br>
+<strong>balance</strong> = &lt;tkinter.Text object .!text2&gt;<br>
+<strong>bank_data</strong> =        age            job   marital  education  ...       0      0.000100
+
+[11162 rows x 12 columns]<br>
+<strong>bank_with_dummies</strong> =        age  balance  duration  campaign  ...  ed...  0                  0
+
+[11162 rows x 23 columns]<br>
+<strong>bankcl</strong> =        age  balance  duration  campaign  ...  ed...  0                  0
+
+[11162 rows x 23 columns]<br>
+<strong>campaign</strong> = &lt;tkinter.Text object .!text4&gt;<br>
+<strong>data</strong> =        age            job   marital  education d...   0  unknown       no
+
+[11162 rows x 17 columns]<br>
+<strong>data_drop_deposite</strong> =        age  balance  duration  campaign  ...  ed...  0                  0
+
+[11162 rows x 22 columns]<br>
+<strong>data_test</strong> =        age  balance  duration  campaign  ...  ed...   0                  0
+
+[2233 rows x 22 columns]<br>
+<strong>data_train</strong> =        age  balance  duration  campaign  ...  ed...   0                  0
+
+[8929 rows x 22 columns]<br>
+<strong>default</strong> = &lt;tkinter.OptionMenu object .!optionmenu4&gt;<br>
+<strong>duration</strong> = &lt;tkinter.Text object .!text3&gt;<br>
+<strong>edu_var</strong> = &lt;tkinter.StringVar object&gt;<br>
+<strong>education</strong> = &lt;tkinter.OptionMenu object .!optionmenu3&gt;<br>
+<strong>gini</strong> = DecisionTreeClassifier(class_weight=None, criter...                 random_state=1, splitter='best')<br>
+<strong>housing</strong> = &lt;tkinter.OptionMenu object .!optionmenu5&gt;<br>
+<strong>job</strong> = &lt;tkinter.OptionMenu object .!optionmenu&gt;<br>
+<strong>job_var</strong> = &lt;tkinter.StringVar object&gt;<br>
+<strong>knn</strong> = KNeighborsClassifier(algorithm='auto', leaf_size...=49, p=2,
+                     weights='uniform')<br>
+<strong>label</strong> = 0        1
+1        1
+2        1
+3        1
+4   ... 0
+Name: deposit_cat, Length: 11162, dtype: int64<br>
+<strong>label_test</strong> = 2415     1
+9356     0
+3673     1
+9303     0
+4011...  0
+Name: deposit_cat, Length: 2233, dtype: int64<br>
+<strong>label_train</strong> = 1576     1
+6392     0
+7341     0
+5211     1
+9353...  0
+Name: deposit_cat, Length: 8929, dtype: int64<br>
+<strong>loan</strong> = &lt;tkinter.OptionMenu object .!optionmenu6&gt;<br>
+<strong>main_input</strong> = [23, 'Blue Collar', 'Divorced', 'Primary', 23, 212, 21, 1, 1, 1, 12]<br>
+<strong>mar_var</strong> = &lt;tkinter.StringVar object&gt;<br>
+<strong>marital</strong> = &lt;tkinter.OptionMenu object .!optionmenu2&gt;<br>
+<strong>master</strong> = &lt;tkinter.Tk object .&gt;<br>
+<strong>mlp</strong> = MLPClassifier(activation='logistic', alpha=1e-05...on_fraction=0.1, verbose=False, warm_start=False)<br>
+<strong>option_var_default</strong> = &lt;tkinter.StringVar object&gt;<br>
+<strong>option_var_housing</strong> = &lt;tkinter.StringVar object&gt;<br>
+<strong>option_var_loan</strong> = &lt;tkinter.StringVar object&gt;<br>
+<strong>predict_knn</strong> = array([1, 0, 0, ..., 0, 0, 0], dtype=int64)<br>
+<strong>predict_mlp</strong> = array([1, 0, 1, ..., 0, 1, 0], dtype=int64)<br>
+<strong>predict_svm</strong> = array([1, 0, 0, ..., 0, 1, 0], dtype=int64)<br>
+<strong>recent_pdays</strong> = &lt;tkinter.Text object .!text5&gt;<br>
+<strong>submit</strong> = &lt;tkinter.Button object .!button&gt;<br>
+<strong>svclf</strong> = LinearSVC(C=2.5, class_weight=None, dual=False, ... random_state=1, tol=0.0001,
+          verbose=0)<br>
+<strong>y_pred_entropy</strong> = array([1, 0, 0, ..., 0, 0, 0], dtype=int64)<br>
+<strong>y_pred_gini</strong> = array([1, 0, 1, ..., 0, 1, 0], dtype=int64)</td></tr></table>
+</body></html>
