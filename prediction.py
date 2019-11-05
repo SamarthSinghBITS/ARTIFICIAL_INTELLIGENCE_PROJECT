@@ -109,7 +109,8 @@ def prediction(x_test, clf_object):
 
 # Function to calculate accuracy
 def cal_accuracy(y_test, y_pred):
-    print("Confusion Matrix: ", confusion_matrix(y_test, y_pred))
+    print("Confusion Matrix: ")
+    print(confusion_matrix(y_test, y_pred))
 
     print("Accuracy : ", accuracy_score(y_test, y_pred) * 100)
 
@@ -314,6 +315,34 @@ def decision():
             predict = 1
         print(predict)
 
+        # convert 1 to Yes and 0 to No
+        def conversion(var):
+            if var == 1:
+                return "Yes"
+            else:
+                return "No"
+        print(conversion(predict_knn_f[0]))
+
+        # output GUI
+        def output_dec(X):
+            master = tk.Tk()
+            master.title("Will the banker invest or not:")
+            Label1 = tk.Label(master, text='KNN', width=50, font=("Courier", 20)).grid(row=1, column=0)
+            Label2 = tk.Label(master, text='CART', font=("Courier", 20)).grid(row=2, column=0)
+            Label3 = tk.Label(master, text='ID', font=("Courier", 20)).grid(row=3, column=0)
+            Label4 = tk.Label(master, text='MLP', font=("Courier", 20)).grid(row=4, column=0)
+            Label5 = tk.Label(master, text='SVM', font=("Courier", 20)).grid(row=5, column=0)
+            Label6 = tk.Label(master, text='Final predict', font=("Courier", 20)).grid(row=6, column=0)
+            Label7 = tk.Label(master, text=(X[0]), font=("Courier", 20)).grid(row=1, column=1)
+            Label8 = tk.Label(master, text=(X[1]), font=("Courier", 20)).grid(row=2, column=1)
+            Label9 = tk.Label(master, text=(X[2]), font=("Courier", 20)).grid(row=3, column=1)
+            Label10 = tk.Label(master, text=(X[3]), font=("Courier", 20)).grid(row=4, column=1)
+            Label11 = tk.Label(master, text=(X[4]), font=("Courier", 20)).grid(row=5, column=1)
+            Label12 = tk.Label(master, text=(X[5]), font=("Courier", 20)).grid(row=6, column=1)
+            tk.mainloop()
+
+        output_dec([conversion(predict_knn_f[0]), conversion(predict_cart_f[0]), conversion(predict_id_f[0])
+                       , conversion(predict_mlp_f[0]), conversion(predict_svm_f[0]), conversion(predict)])
     except ValueError:
         print("Invalid input")
 
@@ -399,4 +428,5 @@ submit = tk.Button(master, text='Submit', width=25, command=decision)
 submit.grid(row=11, column=1)
 
 tk.mainloop()
+
 
