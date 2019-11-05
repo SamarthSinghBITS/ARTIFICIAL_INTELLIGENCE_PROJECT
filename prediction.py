@@ -144,12 +144,14 @@ Info_gain = train_using_entropy(data_train, label_train)
 # print(Info_gain)
 
 # Predict on data set which model has not seen before
+print("CART Algorithm:")
 y_pred_gini = prediction(data_test, gini)
 
 # Calculate Precision, Recall, F-measure and Accuracy of the model
 cal_accuracy(label_test, y_pred_gini)
 
 # Predict on data set which model has not seen before
+print("ID3 Algorithm:")
 y_pred_entropy = prediction(data_test, Info_gain)
 
 # Calculate Precision, Recall, F-measure and Accuracy of the model
@@ -172,6 +174,7 @@ def train_using_knn(x_train, y_train):
 knn = train_using_knn(data_train, label_train)
 
 # Predict on data set which model has not seen before
+print("KNN Algorithm:")
 predict_knn = prediction(data_test, knn)
 
 # Calculate Precision, Recall, F-measure and Accuracy of the model
@@ -191,6 +194,7 @@ def train_using_mlp(x_train, y_train):
 mlp = train_using_mlp(data_train, label_train)
 
 # Predict on data set which model has not seen before
+print("MLP Algorithm:")
 predict_mlp = mlp.predict(data_test)
 
 # Calculate Precision, Recall, F-measure and Accuracy of the model
@@ -209,6 +213,7 @@ def train_using_svm(x_train, y_train):
 svclf = train_using_svm(data_train, label_train)
 
 # Predict on data set which model has not seen before
+print("SVM Algorithm:")
 predict_svm = svclf.predict(data_test)
 
 # Calculate Precision, Recall, F-measure and Accuracy of the model
@@ -394,3 +399,4 @@ submit = tk.Button(master, text='Submit', width=25, command=decision)
 submit.grid(row=11, column=1)
 
 tk.mainloop()
+
