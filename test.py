@@ -120,7 +120,7 @@ def cal_accuracy(y_test, y_pred):
 # Cart Algorithm
 def train_using_gini(x_train, y_train):
     # Creating the classifier object
-    clf_gini = DecisionTreeClassifier(criterion="gini", random_state=1, max_depth=2)
+    clf_gini = DecisionTreeClassifier(criterion="gini", random_state=1, max_depth=9)
     # Performing training
     clf_gini.fit(x_train, y_train)
     return clf_gini
@@ -134,7 +134,7 @@ gini = train_using_gini(data_train, label_train)
 # ID3 Algorithm
 def train_using_entropy(x_train, y_train):
     # Decision tree with entropy
-    clf_entropy = DecisionTreeClassifier(criterion="entropy", random_state=1, max_depth=2)
+    clf_entropy = DecisionTreeClassifier(criterion="entropy", random_state=1, max_depth=9)
     # Performing training
     clf_entropy.fit(x_train, y_train)
     return clf_entropy
